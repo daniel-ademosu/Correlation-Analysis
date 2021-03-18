@@ -1,0 +1,23 @@
+
+── Column specification ────────────────────────────────────────────────────────
+cols(
+  Player = col_character(),
+  Team = col_character(),
+  Positions = col_character(),
+  PTS = col_double(),
+  REB = col_double(),
+  AST = col_double(),
+  BLK = col_double(),
+  STL = col_double(),
+  `FG%` = col_double(),
+  `FT%` = col_double(),
+  `3PM` = col_double(),
+  GP = col_double(),
+  MIN = col_double(),
+  TO = col_double()
+)
+
+[1] 0.8590638
+[1] 906.8746
+null device 
+          1 

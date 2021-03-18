@@ -1,0 +1,27 @@
+-Group: group 6
+-
+-Question
+-========
+-
+-RQ: Is there a correlation between the time played in (minutes) and the number of points gained at the 2019-2020 season of the NBA?
+-
+-Null hypothesis: There is no correlation between the time played in (minutes) and the number of points gained at the 2019-2020 season of the NBA.
+-
+-Alternative hypothesis:  There is a correlation between time played in (minutes) and the number of points gained at the 2019-2020 season of the NBA.
+-
+-Dataset
+-=======
+-
+-URL: https://www.kaggle.com/calvingee/nba-stat-projections-2019
+-
+-Column Headings:
+-
+-```
+-
+-> FantasyPros_Fantasy_Basketball_Overall_2019_Projections <- read_csv("~/FantasyPros_Fantasy_Basketball_Overall_2019_Projections.csv")
+-> colnames(FantasyPros_Fantasy_Basketball_Overall_2019_Projections)
+-[1] "Player"    "Team"      "Positions" "PTS"      
+- [5] "REB"       "AST"       "BLK"       "STL"      
+- [9] "FG%"       "FT%"       "3PM"       "GP"       
+-[13] "MIN"       "TO" 
+-

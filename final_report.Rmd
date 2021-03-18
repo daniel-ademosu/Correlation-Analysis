@@ -1,0 +1,57 @@
+---
+output:
+  word_document: default
+---
+---
+Title: "final_report"
+Author: "GROUP 6"
+Date: "1/7/2021"
+output: word_document
+INTRODUCTION
+Our research is to find the correlation between points gained and time of play at the 2019-2020 season of the NBA. The data set for this research was gotten via the -URL:https://www.kaggle.com/calvingee/nba-stat-projections-2019 
+The data set attributes different features(columns)to 287 respective players at the NBA for the season.
+
+RQ: Is there a correlation between the time played in (minutes) and the number of points gained at the 2019-2020 season of the NBA?
+-
+-Null hypothesis: There is no correlation between the time played in (minutes) and the number of points gained at the 2019-2020 season of the NBA.
+-
+-Alternative hypothesis:  There is a correlation between time played in (minutes) and the number of points gained at the 2019-2020 season of the NBA.
+```{r Message=FALSE, echo=FALSE}
+library(readr)
+FantasyPros_Fantasy_Basketball_Overall_2019_Projections <- read_csv("FantasyPros_Fantasy_Basketball_Overall_2019_Projections.csv")
+summary(FantasyPros_Fantasy_Basketball_Overall_2019_Projections)
+```
+VISUALIZATION
+The scatter plot shows a positive correlation between our two variables.This implies that the number of points gained by a player increases with the time of play.
+
+The histogram is skewed to the right, which implies that our data is not normally distributed.The mean, given in the output below is higher than the mode and median.
+
+```{r Message=FALSE, echo=FALSE}
+x <-FantasyPros_Fantasy_Basketball_Overall_2019_Projections$MIN
+y <-FantasyPros_Fantasy_Basketball_Overall_2019_Projections$PTS
+plot(x, y, las=1, xlab = "Time played (minutes)" , ylab = "Number of points gained" , main = "Timed played in minutes vs Number of points gained\nat the 2019-2020 season of the NBA" , pch =20 , frame =T)
+model <- lm(y ~ x,data =FantasyPros_Fantasy_Basketball_Overall_2019_Projections)
+abline(model,col ="red")
+histogram <-hist(y,10, main = "Distribution of number of points gained\nat the 2019-2020 season of the NBA",xlab = "Number of points" ,ylab = "frequency", col="blue")
+x1 <- seq(0, 2600, 1)
+mn <- mean(y)
+print(mn)
+y1 <-dnorm(x1,mean = mn,sd=sd(y))
+box.size<-diff(histogram$mids[1:2]) *length(y)
+y1<-y1 *box.size
+lines(x1, y1, col="red")
+dev.off()
+```
+ANALYSIS
+Using Kendall's tau,to test the correlation of our non-parametric data, the  positive correlation coefficient of 0.73. We have a strong linear relationship between the number of points gained and the time of play.
+The P value,p-value < 2.2e-16 is much smaller than the significance value of 0.05. This implies that there is a significant relationship between the number of points gained and the time of play. 
+
+
+```{r Message=FALSE, echo=FALSE}
+cor(x,y,use ="pairwise.complete.obs",method = "kendall")
+cor.test(x,y,method ="kendall")
+```
+CONCLUSION
+Using Kendall's tau, there is a significant correlation between the time played in (minutes) and the number of points gained at the 2019-2020 season of the NBA.
+Hence,the Null hypothesis can be rejected.
+
